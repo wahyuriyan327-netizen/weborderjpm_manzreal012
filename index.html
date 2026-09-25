@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ JPM DERAS — Jasa Push Member Grup Otomatis</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
+body{min-height:100vh;background:#05050a;background-image:radial-gradient(circle at 15% 15%,rgba(0,255,255,.18) 0%,transparent 40%),radial-gradient(circle at 85% 85%,rgba(255,0,255,.18) 0%,transparent 40%),radial-gradient(circle at 50% 50%,rgba(0,120,255,.12) 0%,transparent 60%);padding:16px 12px 100px;overflow-x:hidden;position:relative;color:#fff}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(2px 2px at 20px 30px,#0ff,transparent),radial-gradient(2px 2px at 40px 70px,#f0f,transparent),radial-gradient(1px 1px at 90px 40px,#fff,transparent),radial-gradient(2px 2px at 160px 120px,#0ff,transparent),radial-gradient(1px 1px at 300px 200px,#f0f,transparent),radial-gradient(1px 1px at 400px 300px,#0ff,transparent);background-size:500px 500px;opacity:.35;animation:sparkle 12s linear infinite;pointer-events:none;z-index:0}
+@keyframes sparkle{to{transform:translateY(-500px)}}
+.wrapper{max-width:640px;margin:0 auto;position:relative;z-index:10}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:20px;padding:20px 0 0}
+.logo-icon{font-size:56px;display:block;margin-bottom:8px;animation:pulseGlow 2.5s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{filter:drop-shadow(0 0 10px #0ff) drop-shadow(0 0 25px #0ff);transform:scale(1)}50%{filter:drop-shadow(0 0 25px #f0f) drop-shadow(0 0 50px #f0f);transform:scale(1.08)}}
+.header h1{font-size:32px;font-weight:900;background:linear-gradient(135deg,#0ff,#f0f,#0ff);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientShift 3s ease infinite;letter-spacing:1.5px}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.tagline{color:#a0a0c0;font-size:12px;margin-top:8px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.tagline span{color:#0ff;text-shadow:0 0 10px #0ff}
+.badge-auto{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.4);border-radius:50px;font-size:11px;font-weight:700;color:#0f8;letter-spacing:1px;text-transform:uppercase}
+.badge-auto::before{content:'';width:6px;height:6px;background:#0f8;border-radius:50%;box-shadow:0 0 10px #0f8;animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* STATS */
+.stats{display:flex;justify-content:space-around;background:rgba(0,255,255,.05);border:1px solid rgba(0,255,255,.15);border-radius:16px;padding:14px 10px;margin:20px 0;backdrop-filter:blur(10px)}
+.stat-item{text-align:center;flex:1}
+.stat-value{font-size:20px;font-weight:800;color:#0ff;text-shadow:0 0 12px rgba(0,255,255,.6)}
+.stat-label{font-size:10px;color:#8888aa;text-transform:uppercase;letter-spacing:1.5px;margin-top:3px}
+
+/* SECTION TITLE */
+.section-title{display:flex;align-items:center;gap:10px;margin:24px 0 14px;padding-left:4px}
+.section-title h2{font-size:14px;color:#fff;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}
+.section-title .line{flex:1;height:2px;background:linear-gradient(90deg,#0ff,transparent);border-radius:2px}
+
+/* STOK */
+.stock-box{background:linear-gradient(135deg,rgba(0,255,136,.08),rgba(0,255,255,.05));border:1px solid rgba(0,255,136,.3);border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.stock-box::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(0,255,136,.1),transparent);animation:shimmer 3s linear infinite}
+@keyframes shimmer{to{left:100%}}
+.stock-info{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.stock-dot{width:12px;height:12px;background:#0f8;border-radius:50%;box-shadow:0 0 15px #0f8;animation:blink 1.5s ease-in-out infinite}
+.stock-label{font-size:10px;color:#a0a0c0;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.stock-value{font-size:22px;font-weight:900;color:#0f8;text-shadow:0 0 15px rgba(0,255,136,.6);line-height:1}
+.stock-sub{font-size:10px;color:#666688;text-align:right;line-height:1.5;position:relative;z-index:1}
+
+/* PACKAGES */
+.packages{display:flex;flex-direction:column;gap:12px}
+.package{background:rgba(20,20,35,.75);backdrop-filter:blur(15px);border:1.5px solid rgba(0,255,255,.15);border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;transition:all .3s ease;position:relative;overflow:hidden}
+.package::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,255,255,.05),rgba(255,0,255,.05));opacity:0;transition:opacity .3s}
+.package:hover{border-color:rgba(0,255,255,.6);transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,255,255,.2)}
+.package:hover::before{opacity:1}
+.package.selected{border-color:#0ff;background:rgba(0,255,255,.08);box-shadow:0 0 30px rgba(0,255,255,.35),inset 0 0 20px rgba(0,255,255,.05)}
+.package.selected::before{opacity:1}
+.package.popular{border-color:rgba(255,0,255,.4)}
+.package.popular .badge-pop{position:absolute;top:12px;right:-34px;background:linear-gradient(135deg,#f0f,#f40);color:#fff;font-size:9px;font-weight:900;padding:5px 42px;transform:rotate(45deg);letter-spacing:1px;box-shadow:0 0 20px rgba(255,0,255,.6);z-index:2}
+.package-left{display:flex;align-items:center;gap:14px;flex:1;position:relative;z-index:1}
+.package-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(0,255,255,.15),rgba(255,0,255,.15));border:1px solid rgba(0,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:inset 0 0 15px rgba(0,255,255,.1)}
+.package-info h3{font-size:14px;color:#fff;font-weight:800;margin-bottom:3px;letter-spacing:.5px}
+.package-info p{font-size:11px;color:#8888aa;letter-spacing:.3px}
+.package-info .qty{color:#0ff;font-weight:800;font-size:13px;text-shadow:0 0 8px rgba(0,255,255,.5)}
+.package-info .bonus{color:#0f8;font-size:10px;font-weight:700;margin-top:2px}
+.package-right{text-align:right;flex-shrink:0;position:relative;z-index:1}
+.package-price{font-size:18px;font-weight:900;background:linear-gradient(135deg,#0ff,#f0f);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;line-height:1.1}
+.package-price small{font-size:10px;color:#666688;font-weight:500;-webkit-text-fill-color:#666688;display:block;margin-top:2px}
+.package-check{width:22px;height:22px;border-radius:50%;border:2px solid rgba(0,255,255,.4);display:flex;align-items:center;justify-content:center;margin-left:10px;flex-shrink:0;transition:all .3s;font-size:12px;color:transparent;font-weight:900;position:relative;z-index:1}
+.package.selected .package-check{background:#0ff;border-color:#0ff;color:#05050a;box-shadow:0 0 20px #0ff}
+
+/* FORM ORDER */
+.order-box{background:rgba(20,20,35,.85);backdrop-filter:blur(20px);border:1.5px solid rgba(0,255,255,.3);border-radius:22px;padding:22px;box-shadow:0 0 45px rgba(0,255,255,.15);margin-top:14px}
+.order-box h3{font-size:13px;color:#0ff;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-weight:800}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:10px;color:#a0a0c0;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:700}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 15px;background:rgba(0,0,0,.4);border:1.5px solid rgba(0,255,255,.2);border-radius:12px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:all .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#0ff;box-shadow:0 0 20px rgba(0,255,255,.35);background:rgba(0,255,255,.05)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#555577}
+.form-group select option{background:#141423;color:#fff}
+.form-group textarea{resize:vertical;min-height:60px}
+.order-summary{background:rgba(0,255,255,.06);border:1.5px dashed rgba(0,255,255,.35);border-radius:14px;padding:14px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.order-summary .label{font-size:10px;color:#a0a0c0;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+.order-summary .value{font-size:14px;font-weight:800;color:#0ff;text-align:right;margin-top:2px}
+.order-summary .value.total{font-size:22px;background:linear-gradient(135deg,#0ff,#f0f);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* BUTTONS */
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 22px;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;text-decoration:none;transition:all .3s ease;position:relative;overflow:hidden;letter-spacing:.5px;width:100%}
+.btn-primary{background:linear-gradient(135deg,#0ff,#0088ff,#f0f);background-size:200% 200%;color:#05050a;animation:gradientShift 3s ease infinite;box-shadow:0 0 30px rgba(0,255,255,.5),0 0 60px rgba(255,0,255,.3);text-transform:uppercase}
+.btn-primary:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 0 50px rgba(0,255,255,.7),0 0 100px rgba(255,0,255,.5)}
+.btn-primary:active{transform:translateY(0) scale(.98)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;animation:none}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transition:left .6s ease}
+.btn:hover:not(:disabled)::before{left:100%}
+
+/* MODAL PEMBAYARAN */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:200;padding:20px;animation:fadeIn .3s}
+.modal-overlay.active{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:linear-gradient(160deg,#141423,#0a0a15);border:1.5px solid rgba(0,255,255,.4);border-radius:24px;padding:26px 22px;max-width:440px;width:100%;box-shadow:0 0 60px rgba(0,255,255,.3);animation:slideUp .4s cubic-bezier(.68,-.55,.265,1.55);max-height:90vh;overflow-y:auto}
+@keyframes slideUp{from{opacity:0;transform:translateY(50px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-header{text-align:center;margin-bottom:20px}
+.modal-icon{font-size:48px;display:block;margin-bottom:8px;animation:pulseGlow 2s ease-in-out infinite}
+.modal-title{font-size:20px;font-weight:900;background:linear-gradient(135deg,#0ff,#f0f);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px}
+.modal-subtitle{font-size:12px;color:#8888aa;letter-spacing:1px}
+.pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.pay-method{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .3s}
+.pay-method:hover{border-color:rgba(0,255,255,.4);background:rgba(0,255,255,.05)}
+.pay-method.selected{border-color:#0ff;background:rgba(0,255,255,.1);box-shadow:0 0 20px rgba(0,255,255,.3)}
+.pay-method .icon{font-size:26px;display:block;margin-bottom:6px}
+.pay-method .name{font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px}
+.pay-method .desc{font-size:9px;color:#666688;margin-top:2px}
+.qris-box{background:#fff;border-radius:14px;padding:16px;margin-bottom:16px;text-align:center;display:none}
+.qris-box.active{display:block}
+.qris-img{width:180px;height:180px;margin:0 auto 10px;background:repeating-linear-gradient(45deg,#000 0 6px,#fff 6px 12px),repeating-linear-gradient(-45deg,#000 0 6px,#fff 6px 12px);background-blend-mode:difference;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#0a0a15;font-weight:900;font-size:12px;position:relative;overflow:hidden}
+.qris-img::before{content:'';position:absolute;inset:8px;background:#fff;border-radius:4px;background-image:radial-gradient(circle at 20% 20%,#000 2px,transparent 2px),radial-gradient(circle at 80% 20%,#000 2px,transparent 2px),radial-gradient(circle at 20% 80%,#000 2px,transparent 2px);background-size:20px 20px}
+.qris-img span{position:relative;z-index:1;font-size:11px;letter-spacing:1px;color:#0a0a15;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:6px}
+.qris-text{font-size:11px;color:#666;font-weight:600;letter-spacing:.5px}
+.va-box{background:rgba(0,255,255,.05);border:1.5px dashed rgba(0,255,255,.4);border-radius:12px;padding:14px;margin-bottom:16px;display:none;text-align:center}
+.va-box.active{display:block}
+.va-label{font-size:10px;color:#a0a0c0;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px}
+.va-number{font-size:20px;font-weight:900;color:#0ff;text-shadow:0 0 15px rgba(0,255,255,.6);letter-spacing:2px;font-family:monospace}
+.modal-total{text-align:center;padding:14px;background:rgba(255,0,255,.05);border:1px solid rgba(255,0,255,.2);border-radius:12px;margin-bottom:16px}
+.modal-total .lbl{font-size:10px;color:#a0a0c0;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:4px}
+.modal-total .amt{font-size:26px;font-weight:900;background:linear-gradient(135deg,#0ff,#f0f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.modal-actions{display:flex;gap:10px}
+.btn-cancel{background:rgba(255,255,255,.06);color:#8888aa;border:1.5px solid rgba(255,255,255,.15);flex:.5}
+.btn-cancel:hover{background:rgba(255,68,102,.1);color:#ff4466;border-color:rgba(255,68,102,.4)}
+.btn-confirm{flex:1}
+
+/* PROSES PUSH */
+.process-box{text-align:center;padding:20px 0;display:none}
+.process-box.active{display:block}
+.process-icon{font-size:64px;display:block;margin-bottom:16px;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.process-title{font-size:18px;font-weight:900;color:#0ff;margin-bottom:8px;letter-spacing:1px}
+.process-sub{font-size:12px;color:#8888aa;margin-bottom:20px}
+.progress-bar{width:100%;height:10px;background:rgba(0,0,0,.5);border-radius:10px;overflow:hidden;margin-bottom:12px;border:1px solid rgba(0,255,255,.2)}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#0ff,#f0f);border-radius:10px;transition:width .3s ease;box-shadow:0 0 15px rgba(0,255,255,.6)}
+.progress-text{font-size:12px;color:#0ff;font-weight:700;letter-spacing:1px;margin-bottom:16px}
+.log-box{background:rgba(0,0,0,.5);border:1px solid rgba(0,255,255,.2);border-radius:12px;padding:12px;text-align:left;font-family:monospace;font-size:11px;color:#0f8;max-height:150px;overflow-y:auto;margin-bottom:16px}
+.log-box div{margin-bottom:4px;opacity:0;animation:logIn .3s forwards}
+@keyframes logIn{to{opacity:1}}
+
+/* SUKSES */
+.success-box{text-align:center;padding:20px 0;display:none}
+.success-box.active{display:block}
+.success-icon{font-size:72px;display:block;margin-bottom:12px;animation:bounceIn .6s cubic-bezier(.68,-.55,.265,1.55)}
+@keyframes bounceIn{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.success-title{font-size:22px;font-weight:900;background:linear-gradient(135deg,#0f8,#0ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.success-sub{font-size:12px;color:#8888aa;margin-bottom:18px}
+.success-detail{background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.3);border-radius:12px;padding:14px;margin-bottom:16px;text-align:left}
+.success-detail .row{display:flex;justify-content:space-between;padding:6px 0;font-size:12px;border-bottom:1px dashed rgba(0,255,136,.15)}
+.success-detail .row:last-child{border:none}
+.success-detail .k{color:#8888aa;font-weight:600}
+.success-detail .v{color:#0f8;font-weight:800}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(150px);background:rgba(0,255,255,.15);backdrop-filter:blur(10px);border:1.5px solid #0ff;color:#0ff;padding:12px 24px;border-radius:50px;font-size:13px;font-weight:700;box-shadow:0 0 30px rgba(0,255,255,.4);transition:transform .4s cubic-bezier(.68,-.55,.265,1.55);z-index:999;pointer-events:none;max-width:90%;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.error{border-color:#ff4466;color:#ff4466;background:rgba(255,68,102,.15);box-shadow:0 0 30px rgba(255,68,102,.4)}
+
+/* FOOTER */
+.footer{text-align:center;margin-top:40px;padding:24px 16px;background:rgba(20,20,35,.6);border:1px solid rgba(0,255,255,.15);border-radius:20px;backdrop-filter:blur(10px)}
+.footer-title{font-size:12px;color:#0ff;text-transform:uppercase;letter-spacing:2px;font-weight:800;margin-bottom:12px}
+.contact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.contact-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(0,255,255,.05);border:1px solid rgba(0,255,255,.2);border-radius:12px;text-decoration:none;color:#fff;transition:all .3s}
+.contact-item:hover{background:rgba(0,255,255,.1);border-color:#0ff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,255,255,.2)}
+.contact-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0ff,#f0f);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-info{text-align:left;flex:1}
+.contact-info .lbl{font-size:9px;color:#8888aa;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.contact-info .val{font-size:13px;color:#fff;font-weight:800;margin-top:2px}
+.footer-copy{font-size:10px;color:#555577;letter-spacing:1px}
+
+/* RESPONSIF */
+@media(max-width:480px){
+.header h1{font-size:24px}
+.logo-icon{font-size:44px}
+.stat-value{font-size:16px}
+.package-icon{width:42px;height:42px;font-size:20px}
+.package-info h3{font-size:12px}
+.package-price{font-size:15px}
+.order-box{padding:18px 16px}
+.modal{padding:22px 18px}
+.pay-methods{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<!-- HEADER -->
+<div class="header">
+<span class="logo-icon">⚡</span>
+<h1>JPM DERAS</h1>
+<p class="tagline">Jasa <span>Push Member</span> Grup Otomatis</p>
+<div class="badge-auto">AUTO ORDER & AUTO PUSH</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+<div class="stat-item"><div class="stat-value" id="totalOrder">12.847</div><div class="stat-label">Order Sukses</div></div>
+<div class="stat-item"><div class="stat-value">99.8%</div><div class="stat-label">Akurasi</div></div>
+<div class="stat-item"><div class="stat-value">&lt;5s</div><div class="stat-label">Proses</div></div>
+<div class="stat-item"><div class="stat-value">24/7</div><div class="stat-label">Auto</div></div>
+</div>
+
+<!-- STOK -->
+<div class="section-title"><h2>📊 Stok Member</h2><div class="line"></div></div>
+<div class="stock-box">
+<div class="stock-info">
+<div class="stock-dot"></div>
+<div>
+<div class="stock-label">Member Ready</div>
+<div class="stock-value" id="stockValue">4.827</div>
+</div>
+</div>
+<div class="stock-sub">Real-time update<br><span style="color:#0f8;font-weight:700">● Sistem Online</span></div>
+</div>
+
+<!-- PAKET -->
+<div class="section-title"><h2>💎 Pilih Paket</h2><div class="line"></div></div>
+<div class="packages" id="packages">
+<div class="package" data-id="1" data-name="Starter" data-qty="100" data-price="5000" onclick="pickPackage(this)">
+<div class="package-left">
+<div class="package-icon">🌱</div>
+<div class="package-info"><h3>STARTER</h3><p>Dapat <span class="qty">100 Member</span> aktif</p><p class="bonus">🎁 Bonus: 10 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 5.000<small>Rp 50/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+
+<div class="package popular" data-id="2" data-name="Basic" data-qty="250" data-price="10000" onclick="pickPackage(this)">
+<div class="badge-pop">HOT</div>
+<div class="package-left">
+<div class="package-icon">🔥</div>
+<div class="package-info"><h3>BASIC</h3><p>Dapat <span class="qty">250 Member</span> aktif</p><p class="bonus">🎁 Bonus: 30 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 10.000<small>Rp 40/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+
+<div class="package" data-id="3" data-name="Pro" data-qty="500" data-price="18000" onclick="pickPackage(this)">
+<div class="package-left">
+<div class="package-icon">💎</div>
+<div class="package-info"><h3>PRO</h3><p>Dapat <span class="qty">500 Member</span> aktif</p><p class="bonus">🎁 Bonus: 75 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 18.000<small>Rp 36/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+
+<div class="package" data-id="4" data-name="Bisnis" data-qty="1000" data-price="30000" onclick="pickPackage(this)">
+<div class="package-left">
+<div class="package-icon">🚀</div>
+<div class="package-info"><h3>BISNIS</h3><p>Dapat <span class="qty">1.000 Member</span> aktif</p><p class="bonus">🎁 Bonus: 200 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 30.000<small>Rp 30/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+
+<div class="package" data-id="5" data-name="Premium" data-qty="2500" data-price="65000" onclick="pickPackage(this)">
+<div class="package-left">
+<div class="package-icon">👑</div>
+<div class="package-info"><h3>PREMIUM</h3><p>Dapat <span class="qty">2.500 Member</span> aktif</p><p class="bonus">🎁 Bonus: 500 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 65.000<small>Rp 26/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+
+<div class="package" data-id="6" data-name="Sultan" data-qty="5000" data-price="120000" onclick="pickPackage(this)">
+<div class="package-left">
+<div class="package-icon">🏆</div>
+<div class="package-info"><h3>SULTAN</h3><p>Dapat <span class="qty">5.000 Member</span> aktif</p><p class="bonus">🎁 Bonus: 1.500 Member extra</p></div>
+</div>
+<div style="display:flex;align-items:center">
+<div class="package-right"><div class="package-price">Rp 120.000<small>Rp 24/member</small></div></div>
+<div class="package-check">✓</div>
+</div>
+</div>
+</div>
+
+<!-- FORM ORDER -->
+<div class="section-title"><h2>🛒 Data Order</h2><div class="line"></div></div>
+<div class="order-box">
+<h3>⚡ Lengkapi Data</h3>
+<div class="form-group">
+<label>🔗 Link / ID Grup Target</label>
+<input type="text" id="linkGrup" placeholder="https://chat.whatsapp.com/xxxxx atau ID Grup">
+</div>
+<div class="form-group">
+<label>👤 Nama Kamu</label>
+<input type="text" id="nama" placeholder="Nama lengkap">
+</div>
+<div class="form-group">
+<label>📱 Nomor WhatsApp</label>
+<input type="tel" id="wa" placeholder="08xxxxxxxxxx">
